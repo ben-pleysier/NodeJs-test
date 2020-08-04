@@ -1,0 +1,15 @@
+{
+  "exec": {
+    "steps": [
+      "SecurityProviders/siteSecurity",
+      {
+        "name": "",
+        "module": "auth",
+        "action": "logout",
+        "options": {
+          "provider": "siteSecurity"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "siteSecurity",
+  "module": "auth",
+  "action": "provider",
+  "options": {
+    "secret": "P7AaOi1HrVpH1uR",
+    "provider": "Database",
+    "connection": "db",
+    "users": {
+      "table": "users",
+      "identity": "id",
+      "username": "email",
+      "password": "password"
+    },
+    "permissions": {}
+  },
+  "meta": [
+    {
+      "name": "identity",
+      "type": "text"
+    }
+  ]
+}

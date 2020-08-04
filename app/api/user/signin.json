@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "name": "username"
+      },
+      {
+        "type": "text",
+        "name": "password"
+      },
+      {
+        "type": "text",
+        "name": "remember"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      "connections/db",
+      "SecurityProviders/siteSecurity",
+      {
+        "name": "identity",
+        "module": "auth",
+        "action": "login",
+        "options": {
+          "provider": "siteSecurity"
+        },
+        "output": true,
+        "meta": []
+      }
+    ]
+  }
+}

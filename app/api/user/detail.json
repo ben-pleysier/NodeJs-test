@@ -1,0 +1,102 @@
+{
+  "exec": {
+    "steps": [
+      "connections/db",
+      "SecurityProviders/siteSecurity",
+      {
+        "name": "",
+        "module": "auth",
+        "action": "restrict",
+        "options": {
+          "provider": "siteSecurity"
+        }
+      },
+      {
+        "name": "qryUser",
+        "module": "dbconnector",
+        "action": "single",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "SELECT",
+            "columns": [
+              {
+                "table": "users",
+                "column": "*"
+              }
+            ],
+            "table": {
+              "name": "users"
+            },
+            "joins": [],
+            "wheres": {
+              "condition": "AND",
+              "rules": [
+                {
+                  "id": "users.id",
+                  "field": "users.id",
+                  "type": "double",
+                  "operator": "equal",
+                  "value": "{{siteSecurity.identity}}",
+                  "data": {
+                    "table": "users",
+                    "column": "id",
+                    "type": "number"
+                  },
+                  "operation": "="
+                }
+              ],
+              "conditional": null,
+              "valid": true
+            },
+            "query": "SELECT *\nFROM users\nWHERE id = :P1 /* {{siteSecurity.identity}} */",
+            "params": [
+              {
+                "operator": "equal",
+                "type": "expression",
+                "name": ":P1",
+                "value": "{{siteSecurity.identity}}"
+              }
+            ]
+          }
+        },
+        "output": true,
+        "meta": [
+          {
+            "name": "id",
+            "type": "text"
+          },
+          {
+            "name": "first_name",
+            "type": "text"
+          },
+          {
+            "name": "last_name",
+            "type": "text"
+          },
+          {
+            "name": "gender",
+            "type": "text"
+          },
+          {
+            "name": "email",
+            "type": "text"
+          },
+          {
+            "name": "company",
+            "type": "text"
+          },
+          {
+            "name": "avatar",
+            "type": "text"
+          },
+          {
+            "name": "password",
+            "type": "text"
+          }
+        ],
+        "outputType": "object"
+      }
+    ]
+  }
+}
