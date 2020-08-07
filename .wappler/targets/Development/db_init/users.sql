@@ -23,6 +23,7 @@ CREATE TABLE `users` (
   `email` varchar(50) DEFAULT NULL,
   `company` varchar(50) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -47,7 +48,7 @@ INSERT INTO `users` (`id`,`first_name`,`last_name`,`gender`,`email`,`company`,`a
  (17,'Sim','Leaton','Male','sleatong@google.nl','Wuckert Group','/assets/img/avatar-18.jpg'),
  (18,'Malvin','Markushkin','Male','mmarkushkinh@yale.edu','Lockman Inc','/assets/img/avatar-19.jpg'),
  (19,'Darnall','De Vile','Male','ddevilei@marriott.com','Wisoky, Kiehn and Berge','/assets/img/avatar-20.jpg'),
- (20,'Jaquelyn','Sinnatt','Female','jsinnattj@cyberchimps.com','Lebsack, Wisozk and Kuhlman','/assets/img/avatar-6.jpg');
+ (20,'Ben','Pleysier','Male','admin@test.com','Pleysier Web Solutions','/assets/img/avatar-6.jpg','admin');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
